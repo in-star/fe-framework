@@ -1,1 +1,50 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>图片lazyload</title>
+        <style>
+            img {
+                display: block;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i2/2958596375/TB10kTSRVXXXXajXFXXXXXXXXXX_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i1/TB11mpAJVXXXXbtXVXXXXXXXXXX_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i4/TB11DvzQXXXXXbQaFXXXXXXXXXX_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i3/2807304908/TB1n.VeXm7PL1JjSZFHXXcciXXa_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i2/TB1EGMPPFXXXXc2XXXXXXXXXXXX_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i3/3310597052/TB1o4hQSpXXXXbraXXXXXXXXXXX_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i4/1891815962/TB1zo5hfeEJL1JjSZFGXXa6OXXa_!!2-item_pic.png">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i1/TB1sdj1RFXXXXXEXVXXXXXXXXXX_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i2/TB1uLbcPFXXXXchXFXXXXXXXXXX_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i3/3055781561/TB1fqL6b8RRMKJjSZPhXXcZoVXa_!!0-item_pic.jpg">
+        <img src="https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif" data-src="https://gw.alicdn.com/bao/uploaded/i2/1113314630/TB1QLExhfNNTKJjSspcXXb4KVXa_!!0-item_pic.jpg">
+        <script>
+            function lazyload() {
+                const images = document.getElementsByTagName('img')
+                const len = images.length
+                let n = 0 // 利用闭包，只会让事件在滚动的时候触发一次，以后不会再次触发事件绑定
+                return function() {
+                    const seeHeight = document.documentElement.clientHeight // 当前可见区域的面积
+                    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop // 滚动的高度
+                    for (let i = n; i < len; i++) {
+                        if (images[i].offsetTop < seeHeight + scrollTop) { // 图片与dom顶部的距离小于可视化区域+滚动的高度，即是图片滚动到该图片
+                            if (images[i].getAttribute('src') === 'https://8.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/loading.gif') {
+                                images[i].src = images[i].getAttribute('data-src')
+                            }
+                            n = n + 1
+                            console.log('seeHeight', seeHeight, 'scrollTop', scrollTop, 'images[i].offsetTop', images[i].offsetTop)
+                        }
+                    }
+                }
+            }
+            var loadImages = lazyload()
+            window.onload = function () {
+                loadImages()
+                window.addEventListener('scroll', loadImages, false)
+            }
+        </script>
+    </body>
+</html>
