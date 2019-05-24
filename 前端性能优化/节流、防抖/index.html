@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>图片优化</title>
+    <meta charset="UTF-8">
+    <meta name="referer" content="Origin Only" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      .scriptContent{
+        width: 0;
+        height: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scriptContent">
+    </div>
+    <script>
+      /**
+      * 防抖：在一段时间内将连续触发的多次相同的事件合并成一次执行
+      **/
+      function debounce () {
+        let delay = 3000; // 事件延时触发的时间
+        let timeout; // 上一次事件触发的定时器
+        return function (e) { // 使用闭包来实现全局变量
+          timeout && clearTimeout(timeout); // 取消尚且未执行的回调函数
+          console.log('clear...');
+          timeout = setTimeout(function() {
+            cb.apply(null, [e])
+          }, delay);
+        }
+      }
+
+      function cb (e) {
+        console.log('event call back...', e);
+      }
+
+      window.onkeydown = debounce();
+    </script>
+    <script>
+      /**
+      * 节流
+      **/
+    function throttle(fn, delta, context) {
+      var safe = true; // 利用这个标志的话可以在第一次的时候就触发事件
+     
+      return function() {
+        var args = arguments;
+     
+        if (safe) {
+          fn.call(context, args);
+     
+          safe = false;
+          setTimeout(function() {
+            safe = true;
+          }, delta);
+        }
+      };
+    }
+
+    function cb () {
+      console.log('fn callback...')
+    }
+    window.mousemove = throttle();
+    </script>
+  </body>
+</html>
