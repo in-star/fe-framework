@@ -30,9 +30,14 @@
 转译es6新语法糖，一个大礼包，不需要对每一个特定的语法糖使用对应的plugin进行转译。
 + @babel/polyfill
 转译一些新的api（Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise）、新的函数（Object.assign）。  
+![](https://github.com/1415757704/fe-framework/blob/master/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/webpack/babel-polyfill.png?raw=true)
 
 1、将@babel/polyfill直接写在entry中进行引入的话，打包出来的文件会很大。  
+![](https://github.com/1415757704/fe-framework/blob/master/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/webpack/entry-polyfill.png?raw=true)
+![](https://github.com/1415757704/fe-framework/blob/master/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/webpack/entry-polyfill-wp-cfg.png?raw=true)
 
 2、在.babelrc中配置，结合useBuiltIns则可以不需要手动在入口文件中引入polyfill包，webpack会自动根据需要引入对应的转译包，同时包的资源会小很多。  
 2.1、使用eval进行打包，源码会被追加到main.js中，会造成文件比较大。
 2.2、使用source-map则可以将其进行分离到.map文件中。
+![](https://github.com/1415757704/fe-framework/blob/master/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/webpack/polyfill-import-require.png?raw=true)
+![](https://github.com/1415757704/fe-framework/blob/master/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/webpack/polyfill-pg-in-main.png?raw=true)
