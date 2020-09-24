@@ -15,7 +15,10 @@
 
 ##### 环境配置
 + 开发环境
-* cheap-eval-source-map
+  * cheap-eval-source-map
 + 正式环境
-* none
-* hidden-source-map
+  * none
+  * hidden-source-map  
+  
+  参考
+  https://segmentfault.com/a/1190000008315937
