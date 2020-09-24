@@ -49,3 +49,4 @@ polyfill会造成全局的污染，利用@babel/runtime会把对应的转换函�
 
 参考
 https://juejin.im/post/6844903726465941518
+https://segmentfault.com/a/1190000018721165
