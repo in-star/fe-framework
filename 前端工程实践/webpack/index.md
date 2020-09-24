@@ -41,3 +41,10 @@
 2.2、使用source-map则可以将其进行分离到.map文件中。
 ![](https://github.com/1415757704/fe-framework/blob/master/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/webpack/polyfill-import-require.png?raw=true)
 ![](https://github.com/1415757704/fe-framework/blob/master/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/webpack/polyfill-pg-in-main.png?raw=true)
+
+
+##### @babel/runtime、@babel/plugin-transform-runtime
+polyfill会造成全局的污染，利用@babel/runtime会把对应的转换函数内嵌到js文件中。这样会造成需要在每一个需要用到转译函数的地方都需要手动去引入对应的转译函数，而且多个模块之间可能存在相同的转译函数，造成文件体积大。利用transfrom-runtime自动在每个需要用到转译函数的js中引入对应的函数，并且会将其提取到common中，避免多次引入。  
+
+参考
+https://juejin.im/post/6844903726465941518
