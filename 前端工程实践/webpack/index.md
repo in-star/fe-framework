@@ -22,3 +22,17 @@
   
   参考
   https://segmentfault.com/a/1190000008315937
+
+##### babel
++ babel-loader、@babel/core
+编译指定的后缀文件，此时对于es6的语法还是无法直接转译成低版本浏览器能够识别的语法。
++ @babel/preset-env
+转译es6新语法糖，一个大礼包，不需要对每一个特定的语法糖使用对应的plugin进行转译。
++ @babel/polyfill
+转译一些新的api（Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise）、新的函数（Object.assign）。  
+
+1、将@babel/polyfill直接写在entry中进行引入的话，打包出来的文件会很大。  
+
+2、在.babelrc中配置，结合useBuiltIns则可以不需要手动在入口文件中引入polyfill包，webpack会自动根据需要引入对应的转译包，同时包的资源会小很多。  
+2.1、使用eval进行打包，源码会被追加到main.js中，会造成文件比较大。
+2.2、使用source-map则可以将其进行分离到.map文件中。
