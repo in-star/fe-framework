@@ -12,3 +12,10 @@
 + cheap
 
 调试定位的时候，不会定位到具体某一列，只会定位到某行的代码
+
+##### 环境配置
++ 开发环境
+* cheap-eval-source-map
++ 正式环境
+* none
+* hidden-source-map
