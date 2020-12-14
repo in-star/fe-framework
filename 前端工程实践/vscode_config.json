@@ -1,0 +1,26 @@
+{
+	"workbench.startupEditor": "newUntitledFile",
+	"editor.tabSize": 2,
+	"gitlens.advanced.messages": {
+	  "suppressCommitHasNoPreviousCommitWarning": true,
+	  "suppressShowKeyBindingsNotice": true
+	},
+	"workbench.colorTheme": "Dracula Soft",
+	"window.zoomLevel": 0,
+	"git.confirmSync": false,
+	"files.associations": {
+	  "*.vue": "vue"
+	},
+	"terminal.integrated.rendererType": "dom",
+	"editor.codeActionsOnSave": {
+	  "source.fixAll": true
+	},
+	"eslint.validate": ["typescript", "typescriptreact"],
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"python.formatting.autopep8Args": ["--max-line-length", "120", "--experimental"],
+	"python.formatting.provider": "autopep8",
+	"python.dataScience.sendSelectionToInteractiveWindow": false,
+	"diffEditor.renderSideBySide": true,
+	"diffEditor.ignoreTrimWhitespace": true,
+	"eslint.packageManager": "yarn"
+}
